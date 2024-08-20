@@ -1,8 +1,8 @@
-SELECT 
-DATE(started_at) AS date,
-COUNT(id) AS trips,
-MAX(price) / 100 AS max_price_rub,
-AVG(distance) / 1000 AS avg_distance_km
-FROM  scooters_raw.trips 
-GROUP BY DATE(started_at)
-ORDER BY 1
+select
+    date(started_at) as date,
+    count(id) as trips,
+    max(price) / 100 as max_price_rub,
+    avg(distance) / 1000 as avg_distance_km
+from scooters_raw.trips
+group by date(started_at)
+order by 1

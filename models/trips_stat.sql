@@ -1,7 +1,9 @@
-SELECT 
-COUNT(*) AS trips,
-COUNT (DISTINCT user_id) AS users,
-AVG(EXTRACT(EPOCH FROM (finished_at - started_at)) / 60) AS avg_duration_m,
-SUM(price / 100) AS revenue_rub,
-COUNT(*) FILTER (WHERE price = 0 OR NULL) * 100 / CAST (COUNT(*) AS REAL) AS free_trips_pct
-FROM scooters_raw.trips
+select
+    count(*) as trips,
+    count(distinct user_id) as users,
+    avg(extract(epoch from (finished_at - started_at)) / 60) as avg_duration_m,
+    sum(price / 100) as revenue_rub,
+    count(*) filter (where price = 0 or null)
+    * 100
+    / cast(count(*) as real) as free_trips_pct
+from scooters_raw.trips
