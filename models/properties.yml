@@ -38,3 +38,5 @@ models:
     description: "Prepared trips enriched with users data"
     config:
       materialized: "incremental"
+  - name: "create_postgis"
+    description: "Create postgis extension"
