@@ -9,6 +9,8 @@ sources:
         description: "Scooter trips"
       - name: "users"
         description: "Users of scooter service"
+      - name: "events"
+        description: "Raw user events with duplicates"
 
 models:
   - name: "trips_prep"
@@ -40,3 +42,7 @@ models:
       materialized: "incremental"
   - name: "create_postgis"
     description: "Create postgis extension"
+  - name: "events_clean"
+    description: "User events without duplicates"
+    config:
+      materialized: "incremental"
