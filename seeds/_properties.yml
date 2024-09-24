@@ -7,4 +7,8 @@ seeds:
       delimiter: ","
       --column_types:
         --scooters : varchar(10)
+  - name: "event_types"
+    description: ""
+    config:
+        delimeter: ","
         
