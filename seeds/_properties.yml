@@ -11,4 +11,5 @@ seeds:
     description: ""
     config:
         delimeter: ","
-        
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"

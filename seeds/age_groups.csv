@@ -1,0 +1,7 @@
+group,age_start,age_end
+Youth,0,19
+Young adult,20,29
+Adult,30,64
+Middle aged,65,74
+Senior citizen,75,84
+Elderly,85,100
