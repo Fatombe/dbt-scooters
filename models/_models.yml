@@ -67,3 +67,7 @@ models:
       materialized: "view"
   - name: "events_stat"
     description: "Overall user events statistics"
+  - name: "first_name_sex"
+    description: "Unique names with sex from raw table Users"
+  - name: "users_full"
+    description: "All users with sex"
