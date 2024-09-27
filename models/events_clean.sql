@@ -1,6 +1,4 @@
-{{ config(full_refresh = false) }}
-
-select distinct *
+select distinct se.*, {{updated_at()}}
 from {{ source("scooters_raw", "events") }} as se
 {% if is_incremental()%}
 where
