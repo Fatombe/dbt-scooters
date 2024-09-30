@@ -5,3 +5,9 @@ macros:
     description: "Columns which represents timestamp of the last update"
   - name: "create_postgis"
     description: "Create Postgis extanision"
+  - name: "date_in_moscow"
+    description: "Convert timestamptz to date in Europe/Moscow time zone"
+    arguments:
+      - name: "ts_col"
+        type: "string"
+        description: "Timestamp column in timestamptz format"

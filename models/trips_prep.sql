@@ -15,5 +15,5 @@ case
     when price = 0 then true
     else false
 end as isfree,
-date(started_at) as "date"
+{{date_in_moscow('started_at')}} as "date"
 from {{ source("scooters_raw", "trips")}}
