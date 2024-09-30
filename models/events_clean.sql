@@ -1,10 +1,18 @@
-select distinct se.*, {{updated_at()}}
-from {{ source("scooters_raw", "events") }} as se
-{% if is_incremental()%}
+{% set date = var("date", none) %}
+select distinct
+    user_id,
+    "timestamp",
+    type_id,
+    {{ updated_at() }}
+from
+    {{ source("scooters_raw", "events") }}
 where
-    "timestamp" > (select max("timestamp") from {{ this }})
-    order by "timestamp"
+{% if is_incremental() %}
+    {% if date %}
+        date("timestamp") = date '{{ date }}'
+    {% else %}
+        "timestamp" > (select max("timestamp") from {{ this }}) order by "timestamp"
+    {% endif %}
 {% else %}
-    where
-    "timestamp" < date '2023-08-01'
+    "timestamp" < timestamp '2023-08-01'
 {% endif %}
