@@ -24,4 +24,13 @@ seeds:
         description: "Start age of group"
         tests: ["unique_not_null"]
   - name: "null_names"
-    description: "Names without sex"    
+    description: "Names without sex"
+    columns:
+      - name: "first_name"
+        description: "User name"
+        tests: ["unique_not_null"]
+      - name: "gender"
+        description: "Sex of user"
+        tests:
+        - accepted_values:
+            values: [ "M", "F" ]
