@@ -15,8 +15,8 @@ target-path: "target"
 clean-targets:
   - "target"
   - "dbt_packages"
-on-run-end:
-    - "grant usage on schema finance to finance;"
+# on-run-end:
+#     - "grant usage on schema finance to finance;"
 models:
   dbt_scooters:
     +materialized: table
