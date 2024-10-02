@@ -15,6 +15,16 @@ sources:
             count: 730
             period: "day"
         loaded_at_field: "finished_at at time zone 'UTC'"
+        columns:
+          - name: "user_id"
+            description: "User identifier"
+            tests:
+              - relationships:
+                  name: "every_trip_has_user"
+                  to: "source('scooters_raw', 'users')"
+                  field: "id"
+              - not_null:
+                  name: "user_id_is_not_null"
       - name: "users"
         description: "Users of scooter service"
         columns:
