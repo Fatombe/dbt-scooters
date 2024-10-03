@@ -2,13 +2,26 @@ version: 2
 
 seeds:
   - name: "models"
-    description: "Scooter models info and statistics"
+    description: >
+      Scooter models information and park statistics by model.
+      Includes information about the manufacturing company.
+      Data received from the service team and uploaded by Mark.
+      Data is current as of summer 2023.
     config:
       delimiter: ","
       --column_types:
         --scooters : varchar(10)
   - name: "event_types"
-    description: ""
+    description: "{{doc('event_types')}}"
+    columns:
+      - name: "type_id"
+        description: >
+          An integer representing the unique identifier for each event type.
+          This ID is used in the user events table to refer to specific event types.
+      - name: "type"
+        description: >
+          A string providing the textual name of the event type.
+          This name describes the nature of the event and is used for reporting and analysis purpose.
     config:
         delimeter: ","
   - name: "age_groups"
