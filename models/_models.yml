@@ -112,3 +112,13 @@ models:
     description: "Unique names with sex from raw table Users"
   - name: "users_full"
     description: "All users with sex"
+  - name: "sex_age_pivot"
+    description: "Trips per age pivoted by sex"
+    columns:
+      - name: "age"
+        description: "Trips per age grouped by sex"
+        tests:
+          - "dbt_utils.not_constant"
+    tests:
+      - unique_key:
+          columns: [ "age" ]
