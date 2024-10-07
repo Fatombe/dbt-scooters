@@ -15,8 +15,9 @@ target-path: "target"
 clean-targets:
   - "target"
   - "dbt_packages"
-# on-run-end:
-#     - "grant usage on schema finance to finance;"
+vars:
+  'dbt_date:time_zone': 'Europe/Moscow'
+
 models:
   dbt_scooters:
     +materialized: table
@@ -33,3 +34,5 @@ seeds:
     +persist_docs:
       relation: true
       columns: true
+# on-run-end:
+#     - "grant usage on schema finance to finance;"

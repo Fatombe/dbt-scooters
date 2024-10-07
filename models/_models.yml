@@ -46,6 +46,9 @@ models:
     description: "Trips prepared for analysis"
     config:
       materialized: "view"
+    tests:
+      - row_count_same:
+          compare_model: "source('scooters_raw', 'trips')"
   - name: "trips_stat"
     description: "Overall trips statistics"
   - name: "trips_stat_daily"
@@ -57,11 +60,11 @@ models:
     description: "Daily trips statistics by user age"
     tests:
       - unique:
-          name: "Проверка на уникальность столбцов date & age"
-          column_name: "date::text || age::text"
+            name: "Проверка на уникальность столбцов date & age"
+            column_name: "date::text || age::text"
       - unique_key:
-          name: "Проверка на уникальность столбцов date & age"
-          columns: [ "date", "age" ]
+            name: "Проверка на уникальность столбцов date & age"
+            columns: [ "date", "age" ]
   - name: "trips_age_daily_stat"
     description: "Aggregation of daily trips statistics by user age"
   - name: "trips_geom"
@@ -122,3 +125,5 @@ models:
     tests:
       - unique_key:
           columns: [ "age" ]
+      - dbt_expectations.expect_table_column_count_to_equal:
+          value: 3
