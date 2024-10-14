@@ -29,21 +29,21 @@ seeds:
     columns:
       - name: "group"
         description: "Age group name for report"
-        tests: ["unique_not_null"]
+        data_tests: ["unique_not_null"]
       - name: "age_end"
         description: "End age of group"
-        tests: ["unique_not_null"]
+        data_tests: ["unique_not_null"]
       - name: "age_start"
         description: "Start age of group"
-        tests: ["unique_not_null"]
+        data_tests: ["unique_not_null"]
   - name: "null_names"
     description: "Names without sex"
     columns:
       - name: "first_name"
         description: "User name"
-        tests: ["unique_not_null"]
+        data_tests: ["unique_not_null"]
       - name: "gender"
         description: "Sex of user"
-        tests:
+        data_tests:
         - accepted_values:
             values: [ "M", "F" ]
